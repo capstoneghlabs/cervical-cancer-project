@@ -1,0 +1,1 @@
+# Running Inference of Retinanet Model on i.MX8+ Device

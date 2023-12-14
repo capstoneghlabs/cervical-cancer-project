@@ -9,7 +9,7 @@ Global Health (GH) Laboratories: Contact (Michael Deeds, Global Health Laborator
 
 ## Contributors
 - Bereket Adego Retta, Carnegie Mellon University-Africa bretta@andrew.cmu.edu  
--Gabrial Ashungafac Zencha, Carnegie Mellon University-Africa, gzenchaa@andrew.cmu.edu
+- Gabrial Ashungafac Zencha, Carnegie Mellon University-Africa, gzenchaa@andrew.cmu.edu
 - Jeannette Uwizeyimana, Carnegie Mellon University-Africa, juwizeyi@andrew.cmu.edu 
 - Natasha Mutangana, Carnegie Mellon University-Africa, nmutanga@andrew.cmu.edu 
 
@@ -25,19 +25,28 @@ The purpose of this project is to further the development and optimization of th
 
 
 ## Installation and Setup
-[Step-by-step instructions for setting up the project environment. Include any necessary software or hardware prerequisites, and instructions for installing them.]
+The following setup are tested on Linux based operating systems. 
+- Personal Computer for Development (OS: Ubuntu 20.04)
+    - Pytorch Retinanet 
+        - For eeveloping a Retinanet Model from scract using pytorch, please follow the instructions on https://github.com/yhenon/pytorch-retinanet
+        - NB: Pytorch can only be quantized to ONNX Models. Notes on Quantization are in the Quantization directory on this repository
+    - Pytorch Retinanet 
+        - For developing a Retinanet Model from scract using Keras, please follow the instructions on https://github.com/fizyr/keras-retinanet
+        - NB: Keras can be converted to TensorFlow Lite (TF-Lite) models which can be quantized directly or also converted to ONNX models
+- I.MX 8 PLUS Device
+    - A machine learning image should be booted to the device 
+    - TensorFlow Lite for I.mx which instructions on how to build can be found here https://github.com/nxp-imx/tensorflow-imx
+    - Ensure the libvx_delegate.so is available on the device by checking in the /usr/bin/ for installed libraries.
+    - Python OpenCV is also required can be installed with *pip install opencv-python*
 
 ## Usage
-[Instructions on how to use the deployed model on the i.MX8+ device. Include any necessary commands, scripts, or user interfaces that are part of the project.]
+Information on how to run inference on the deployed models can be found in the inference directory
 
-## Licensing
-[Information about the project's license, if applicable.]
+
 
 ## Acknowledgments
 Special thanks to Global Health Laboratories for their support and collaboration in this project. Their dedication to improving global health outcomes has been a key inspiration for our work.
 
-## Contact
-[Contact information for the project team or lead. Could include an email address, a link to a project website, or social media handles.]
 
 ---
 
