@@ -5,22 +5,20 @@ This collection of Python scripts is designed for demonstrating various inferenc
 
 ## Files and Their Purpose
 
-1. **test_quant.py**
-   - This script is likely involved in testing the quantization process of models. It may include functions for converting models to a quantized format or evaluating their performance post-quantization.
 
-2. **test_cpu_class.py**
+1. **test_cpu_class.py**
    - This file is probably designed to test inference on a CPU with a focus on classification tasks. It might include code for loading classification models, preprocessing input data, and running inference.
 
-3. **test_cpu_int8.py**
+2. **test_cpu_int8.py**
    - As the name suggests, this script is intended for running inference on CPU with INT8 quantized models. This would involve loading INT8 models and evaluating their performance on a CPU.
 
-4. **test_cpu.py**
+3. **test_cpu.py**
    - A general script for testing model inference on a CPU. This could include loading various types of models, preprocessing data, and executing inference routines.
 
-5. **test_npu_int8.py**
+4. **test_npu_int8.py**
    - This file is specifically for testing INT8 quantized model inference on an NPU (Neural Processing Unit). It likely contains routines for loading INT8 models and evaluating their performance on an NPU.
 
-6. **test_npu.py**
+5. **test_npu.py**
    - Similar to `test_npu_int8.py`, but this script might focus on non-quantized models or a wider range of model types for inference on an NPU.
 
 ## How to Use These Scripts
