@@ -1,0 +1,7 @@
+Pillow
+cython
+keras-resnet==0.2.0
+numpy
+opencv-python
+progressbar2
+six

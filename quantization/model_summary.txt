@@ -1,0 +1,592 @@
+Model: "model"
+__________________________________________________________________________________________________
+ Layer (type)                Output Shape                 Param #   Connected to                  
+==================================================================================================
+ input_1 (InputLayer)        [(None, 1067, 800, 3)]       0         []                            
+                                                                                                  
+ padding_conv1 (ZeroPadding  (None, None, None, 3)        0         ['input_1[0][0]']             
+ 2D)                                                                                              
+                                                                                                  
+ conv1 (Conv2D)              (None, None, None, 64)       9408      ['padding_conv1[0][0]']       
+                                                                                                  
+ bn_conv1 (BatchNormalizati  (None, None, None, 64)       256       ['conv1[0][0]']               
+ on)                                                                                              
+                                                                                                  
+ conv1_relu (Activation)     (None, None, None, 64)       0         ['bn_conv1[0][0]']            
+                                                                                                  
+ pool1 (MaxPooling2D)        (None, None, None, 64)       0         ['conv1_relu[0][0]']          
+                                                                                                  
+ res2a_branch2a (Conv2D)     (None, None, None, 64)       4096      ['pool1[0][0]']               
+                                                                                                  
+ bn2a_branch2a (BatchNormal  (None, None, None, 64)       256       ['res2a_branch2a[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res2a_branch2a_relu (Activ  (None, None, None, 64)       0         ['bn2a_branch2a[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ padding2a_branch2b (ZeroPa  (None, None, None, 64)       0         ['res2a_branch2a_relu[0][0]'] 
+ dding2D)                                                                                         
+                                                                                                  
+ res2a_branch2b (Conv2D)     (None, None, None, 64)       36864     ['padding2a_branch2b[0][0]']  
+                                                                                                  
+ bn2a_branch2b (BatchNormal  (None, None, None, 64)       256       ['res2a_branch2b[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res2a_branch2b_relu (Activ  (None, None, None, 64)       0         ['bn2a_branch2b[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ res2a_branch2c (Conv2D)     (None, None, None, 256)      16384     ['res2a_branch2b_relu[0][0]'] 
+                                                                                                  
+ res2a_branch1 (Conv2D)      (None, None, None, 256)      16384     ['pool1[0][0]']               
+                                                                                                  
+ bn2a_branch2c (BatchNormal  (None, None, None, 256)      1024      ['res2a_branch2c[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ bn2a_branch1 (BatchNormali  (None, None, None, 256)      1024      ['res2a_branch1[0][0]']       
+ zation)                                                                                          
+                                                                                                  
+ res2a (Add)                 (None, None, None, 256)      0         ['bn2a_branch2c[0][0]',       
+                                                                     'bn2a_branch1[0][0]']        
+                                                                                                  
+ res2a_relu (Activation)     (None, None, None, 256)      0         ['res2a[0][0]']               
+                                                                                                  
+ res2b_branch2a (Conv2D)     (None, None, None, 64)       16384     ['res2a_relu[0][0]']          
+                                                                                                  
+ bn2b_branch2a (BatchNormal  (None, None, None, 64)       256       ['res2b_branch2a[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res2b_branch2a_relu (Activ  (None, None, None, 64)       0         ['bn2b_branch2a[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ padding2b_branch2b (ZeroPa  (None, None, None, 64)       0         ['res2b_branch2a_relu[0][0]'] 
+ dding2D)                                                                                         
+                                                                                                  
+ res2b_branch2b (Conv2D)     (None, None, None, 64)       36864     ['padding2b_branch2b[0][0]']  
+                                                                                                  
+ bn2b_branch2b (BatchNormal  (None, None, None, 64)       256       ['res2b_branch2b[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res2b_branch2b_relu (Activ  (None, None, None, 64)       0         ['bn2b_branch2b[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ res2b_branch2c (Conv2D)     (None, None, None, 256)      16384     ['res2b_branch2b_relu[0][0]'] 
+                                                                                                  
+ bn2b_branch2c (BatchNormal  (None, None, None, 256)      1024      ['res2b_branch2c[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res2b (Add)                 (None, None, None, 256)      0         ['bn2b_branch2c[0][0]',       
+                                                                     'res2a_relu[0][0]']          
+                                                                                                  
+ res2b_relu (Activation)     (None, None, None, 256)      0         ['res2b[0][0]']               
+                                                                                                  
+ res2c_branch2a (Conv2D)     (None, None, None, 64)       16384     ['res2b_relu[0][0]']          
+                                                                                                  
+ bn2c_branch2a (BatchNormal  (None, None, None, 64)       256       ['res2c_branch2a[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res2c_branch2a_relu (Activ  (None, None, None, 64)       0         ['bn2c_branch2a[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ padding2c_branch2b (ZeroPa  (None, None, None, 64)       0         ['res2c_branch2a_relu[0][0]'] 
+ dding2D)                                                                                         
+                                                                                                  
+ res2c_branch2b (Conv2D)     (None, None, None, 64)       36864     ['padding2c_branch2b[0][0]']  
+                                                                                                  
+ bn2c_branch2b (BatchNormal  (None, None, None, 64)       256       ['res2c_branch2b[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res2c_branch2b_relu (Activ  (None, None, None, 64)       0         ['bn2c_branch2b[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ res2c_branch2c (Conv2D)     (None, None, None, 256)      16384     ['res2c_branch2b_relu[0][0]'] 
+                                                                                                  
+ bn2c_branch2c (BatchNormal  (None, None, None, 256)      1024      ['res2c_branch2c[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res2c (Add)                 (None, None, None, 256)      0         ['bn2c_branch2c[0][0]',       
+                                                                     'res2b_relu[0][0]']          
+                                                                                                  
+ res2c_relu (Activation)     (None, None, None, 256)      0         ['res2c[0][0]']               
+                                                                                                  
+ res3a_branch2a (Conv2D)     (None, None, None, 128)      32768     ['res2c_relu[0][0]']          
+                                                                                                  
+ bn3a_branch2a (BatchNormal  (None, None, None, 128)      512       ['res3a_branch2a[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res3a_branch2a_relu (Activ  (None, None, None, 128)      0         ['bn3a_branch2a[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ padding3a_branch2b (ZeroPa  (None, None, None, 128)      0         ['res3a_branch2a_relu[0][0]'] 
+ dding2D)                                                                                         
+                                                                                                  
+ res3a_branch2b (Conv2D)     (None, None, None, 128)      147456    ['padding3a_branch2b[0][0]']  
+                                                                                                  
+ bn3a_branch2b (BatchNormal  (None, None, None, 128)      512       ['res3a_branch2b[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res3a_branch2b_relu (Activ  (None, None, None, 128)      0         ['bn3a_branch2b[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ res3a_branch2c (Conv2D)     (None, None, None, 512)      65536     ['res3a_branch2b_relu[0][0]'] 
+                                                                                                  
+ res3a_branch1 (Conv2D)      (None, None, None, 512)      131072    ['res2c_relu[0][0]']          
+                                                                                                  
+ bn3a_branch2c (BatchNormal  (None, None, None, 512)      2048      ['res3a_branch2c[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ bn3a_branch1 (BatchNormali  (None, None, None, 512)      2048      ['res3a_branch1[0][0]']       
+ zation)                                                                                          
+                                                                                                  
+ res3a (Add)                 (None, None, None, 512)      0         ['bn3a_branch2c[0][0]',       
+                                                                     'bn3a_branch1[0][0]']        
+                                                                                                  
+ res3a_relu (Activation)     (None, None, None, 512)      0         ['res3a[0][0]']               
+                                                                                                  
+ res3b_branch2a (Conv2D)     (None, None, None, 128)      65536     ['res3a_relu[0][0]']          
+                                                                                                  
+ bn3b_branch2a (BatchNormal  (None, None, None, 128)      512       ['res3b_branch2a[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res3b_branch2a_relu (Activ  (None, None, None, 128)      0         ['bn3b_branch2a[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ padding3b_branch2b (ZeroPa  (None, None, None, 128)      0         ['res3b_branch2a_relu[0][0]'] 
+ dding2D)                                                                                         
+                                                                                                  
+ res3b_branch2b (Conv2D)     (None, None, None, 128)      147456    ['padding3b_branch2b[0][0]']  
+                                                                                                  
+ bn3b_branch2b (BatchNormal  (None, None, None, 128)      512       ['res3b_branch2b[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res3b_branch2b_relu (Activ  (None, None, None, 128)      0         ['bn3b_branch2b[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ res3b_branch2c (Conv2D)     (None, None, None, 512)      65536     ['res3b_branch2b_relu[0][0]'] 
+                                                                                                  
+ bn3b_branch2c (BatchNormal  (None, None, None, 512)      2048      ['res3b_branch2c[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res3b (Add)                 (None, None, None, 512)      0         ['bn3b_branch2c[0][0]',       
+                                                                     'res3a_relu[0][0]']          
+                                                                                                  
+ res3b_relu (Activation)     (None, None, None, 512)      0         ['res3b[0][0]']               
+                                                                                                  
+ res3c_branch2a (Conv2D)     (None, None, None, 128)      65536     ['res3b_relu[0][0]']          
+                                                                                                  
+ bn3c_branch2a (BatchNormal  (None, None, None, 128)      512       ['res3c_branch2a[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res3c_branch2a_relu (Activ  (None, None, None, 128)      0         ['bn3c_branch2a[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ padding3c_branch2b (ZeroPa  (None, None, None, 128)      0         ['res3c_branch2a_relu[0][0]'] 
+ dding2D)                                                                                         
+                                                                                                  
+ res3c_branch2b (Conv2D)     (None, None, None, 128)      147456    ['padding3c_branch2b[0][0]']  
+                                                                                                  
+ bn3c_branch2b (BatchNormal  (None, None, None, 128)      512       ['res3c_branch2b[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res3c_branch2b_relu (Activ  (None, None, None, 128)      0         ['bn3c_branch2b[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ res3c_branch2c (Conv2D)     (None, None, None, 512)      65536     ['res3c_branch2b_relu[0][0]'] 
+                                                                                                  
+ bn3c_branch2c (BatchNormal  (None, None, None, 512)      2048      ['res3c_branch2c[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res3c (Add)                 (None, None, None, 512)      0         ['bn3c_branch2c[0][0]',       
+                                                                     'res3b_relu[0][0]']          
+                                                                                                  
+ res3c_relu (Activation)     (None, None, None, 512)      0         ['res3c[0][0]']               
+                                                                                                  
+ res3d_branch2a (Conv2D)     (None, None, None, 128)      65536     ['res3c_relu[0][0]']          
+                                                                                                  
+ bn3d_branch2a (BatchNormal  (None, None, None, 128)      512       ['res3d_branch2a[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res3d_branch2a_relu (Activ  (None, None, None, 128)      0         ['bn3d_branch2a[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ padding3d_branch2b (ZeroPa  (None, None, None, 128)      0         ['res3d_branch2a_relu[0][0]'] 
+ dding2D)                                                                                         
+                                                                                                  
+ res3d_branch2b (Conv2D)     (None, None, None, 128)      147456    ['padding3d_branch2b[0][0]']  
+                                                                                                  
+ bn3d_branch2b (BatchNormal  (None, None, None, 128)      512       ['res3d_branch2b[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res3d_branch2b_relu (Activ  (None, None, None, 128)      0         ['bn3d_branch2b[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ res3d_branch2c (Conv2D)     (None, None, None, 512)      65536     ['res3d_branch2b_relu[0][0]'] 
+                                                                                                  
+ bn3d_branch2c (BatchNormal  (None, None, None, 512)      2048      ['res3d_branch2c[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res3d (Add)                 (None, None, None, 512)      0         ['bn3d_branch2c[0][0]',       
+                                                                     'res3c_relu[0][0]']          
+                                                                                                  
+ res3d_relu (Activation)     (None, None, None, 512)      0         ['res3d[0][0]']               
+                                                                                                  
+ res4a_branch2a (Conv2D)     (None, None, None, 256)      131072    ['res3d_relu[0][0]']          
+                                                                                                  
+ bn4a_branch2a (BatchNormal  (None, None, None, 256)      1024      ['res4a_branch2a[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res4a_branch2a_relu (Activ  (None, None, None, 256)      0         ['bn4a_branch2a[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ padding4a_branch2b (ZeroPa  (None, None, None, 256)      0         ['res4a_branch2a_relu[0][0]'] 
+ dding2D)                                                                                         
+                                                                                                  
+ res4a_branch2b (Conv2D)     (None, None, None, 256)      589824    ['padding4a_branch2b[0][0]']  
+                                                                                                  
+ bn4a_branch2b (BatchNormal  (None, None, None, 256)      1024      ['res4a_branch2b[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res4a_branch2b_relu (Activ  (None, None, None, 256)      0         ['bn4a_branch2b[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ res4a_branch2c (Conv2D)     (None, None, None, 1024)     262144    ['res4a_branch2b_relu[0][0]'] 
+                                                                                                  
+ res4a_branch1 (Conv2D)      (None, None, None, 1024)     524288    ['res3d_relu[0][0]']          
+                                                                                                  
+ bn4a_branch2c (BatchNormal  (None, None, None, 1024)     4096      ['res4a_branch2c[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ bn4a_branch1 (BatchNormali  (None, None, None, 1024)     4096      ['res4a_branch1[0][0]']       
+ zation)                                                                                          
+                                                                                                  
+ res4a (Add)                 (None, None, None, 1024)     0         ['bn4a_branch2c[0][0]',       
+                                                                     'bn4a_branch1[0][0]']        
+                                                                                                  
+ res4a_relu (Activation)     (None, None, None, 1024)     0         ['res4a[0][0]']               
+                                                                                                  
+ res4b_branch2a (Conv2D)     (None, None, None, 256)      262144    ['res4a_relu[0][0]']          
+                                                                                                  
+ bn4b_branch2a (BatchNormal  (None, None, None, 256)      1024      ['res4b_branch2a[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res4b_branch2a_relu (Activ  (None, None, None, 256)      0         ['bn4b_branch2a[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ padding4b_branch2b (ZeroPa  (None, None, None, 256)      0         ['res4b_branch2a_relu[0][0]'] 
+ dding2D)                                                                                         
+                                                                                                  
+ res4b_branch2b (Conv2D)     (None, None, None, 256)      589824    ['padding4b_branch2b[0][0]']  
+                                                                                                  
+ bn4b_branch2b (BatchNormal  (None, None, None, 256)      1024      ['res4b_branch2b[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res4b_branch2b_relu (Activ  (None, None, None, 256)      0         ['bn4b_branch2b[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ res4b_branch2c (Conv2D)     (None, None, None, 1024)     262144    ['res4b_branch2b_relu[0][0]'] 
+                                                                                                  
+ bn4b_branch2c (BatchNormal  (None, None, None, 1024)     4096      ['res4b_branch2c[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res4b (Add)                 (None, None, None, 1024)     0         ['bn4b_branch2c[0][0]',       
+                                                                     'res4a_relu[0][0]']          
+                                                                                                  
+ res4b_relu (Activation)     (None, None, None, 1024)     0         ['res4b[0][0]']               
+                                                                                                  
+ res4c_branch2a (Conv2D)     (None, None, None, 256)      262144    ['res4b_relu[0][0]']          
+                                                                                                  
+ bn4c_branch2a (BatchNormal  (None, None, None, 256)      1024      ['res4c_branch2a[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res4c_branch2a_relu (Activ  (None, None, None, 256)      0         ['bn4c_branch2a[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ padding4c_branch2b (ZeroPa  (None, None, None, 256)      0         ['res4c_branch2a_relu[0][0]'] 
+ dding2D)                                                                                         
+                                                                                                  
+ res4c_branch2b (Conv2D)     (None, None, None, 256)      589824    ['padding4c_branch2b[0][0]']  
+                                                                                                  
+ bn4c_branch2b (BatchNormal  (None, None, None, 256)      1024      ['res4c_branch2b[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res4c_branch2b_relu (Activ  (None, None, None, 256)      0         ['bn4c_branch2b[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ res4c_branch2c (Conv2D)     (None, None, None, 1024)     262144    ['res4c_branch2b_relu[0][0]'] 
+                                                                                                  
+ bn4c_branch2c (BatchNormal  (None, None, None, 1024)     4096      ['res4c_branch2c[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res4c (Add)                 (None, None, None, 1024)     0         ['bn4c_branch2c[0][0]',       
+                                                                     'res4b_relu[0][0]']          
+                                                                                                  
+ res4c_relu (Activation)     (None, None, None, 1024)     0         ['res4c[0][0]']               
+                                                                                                  
+ res4d_branch2a (Conv2D)     (None, None, None, 256)      262144    ['res4c_relu[0][0]']          
+                                                                                                  
+ bn4d_branch2a (BatchNormal  (None, None, None, 256)      1024      ['res4d_branch2a[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res4d_branch2a_relu (Activ  (None, None, None, 256)      0         ['bn4d_branch2a[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ padding4d_branch2b (ZeroPa  (None, None, None, 256)      0         ['res4d_branch2a_relu[0][0]'] 
+ dding2D)                                                                                         
+                                                                                                  
+ res4d_branch2b (Conv2D)     (None, None, None, 256)      589824    ['padding4d_branch2b[0][0]']  
+                                                                                                  
+ bn4d_branch2b (BatchNormal  (None, None, None, 256)      1024      ['res4d_branch2b[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res4d_branch2b_relu (Activ  (None, None, None, 256)      0         ['bn4d_branch2b[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ res4d_branch2c (Conv2D)     (None, None, None, 1024)     262144    ['res4d_branch2b_relu[0][0]'] 
+                                                                                                  
+ bn4d_branch2c (BatchNormal  (None, None, None, 1024)     4096      ['res4d_branch2c[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res4d (Add)                 (None, None, None, 1024)     0         ['bn4d_branch2c[0][0]',       
+                                                                     'res4c_relu[0][0]']          
+                                                                                                  
+ res4d_relu (Activation)     (None, None, None, 1024)     0         ['res4d[0][0]']               
+                                                                                                  
+ res4e_branch2a (Conv2D)     (None, None, None, 256)      262144    ['res4d_relu[0][0]']          
+                                                                                                  
+ bn4e_branch2a (BatchNormal  (None, None, None, 256)      1024      ['res4e_branch2a[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res4e_branch2a_relu (Activ  (None, None, None, 256)      0         ['bn4e_branch2a[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ padding4e_branch2b (ZeroPa  (None, None, None, 256)      0         ['res4e_branch2a_relu[0][0]'] 
+ dding2D)                                                                                         
+                                                                                                  
+ res4e_branch2b (Conv2D)     (None, None, None, 256)      589824    ['padding4e_branch2b[0][0]']  
+                                                                                                  
+ bn4e_branch2b (BatchNormal  (None, None, None, 256)      1024      ['res4e_branch2b[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res4e_branch2b_relu (Activ  (None, None, None, 256)      0         ['bn4e_branch2b[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ res4e_branch2c (Conv2D)     (None, None, None, 1024)     262144    ['res4e_branch2b_relu[0][0]'] 
+                                                                                                  
+ bn4e_branch2c (BatchNormal  (None, None, None, 1024)     4096      ['res4e_branch2c[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res4e (Add)                 (None, None, None, 1024)     0         ['bn4e_branch2c[0][0]',       
+                                                                     'res4d_relu[0][0]']          
+                                                                                                  
+ res4e_relu (Activation)     (None, None, None, 1024)     0         ['res4e[0][0]']               
+                                                                                                  
+ res4f_branch2a (Conv2D)     (None, None, None, 256)      262144    ['res4e_relu[0][0]']          
+                                                                                                  
+ bn4f_branch2a (BatchNormal  (None, None, None, 256)      1024      ['res4f_branch2a[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res4f_branch2a_relu (Activ  (None, None, None, 256)      0         ['bn4f_branch2a[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ padding4f_branch2b (ZeroPa  (None, None, None, 256)      0         ['res4f_branch2a_relu[0][0]'] 
+ dding2D)                                                                                         
+                                                                                                  
+ res4f_branch2b (Conv2D)     (None, None, None, 256)      589824    ['padding4f_branch2b[0][0]']  
+                                                                                                  
+ bn4f_branch2b (BatchNormal  (None, None, None, 256)      1024      ['res4f_branch2b[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res4f_branch2b_relu (Activ  (None, None, None, 256)      0         ['bn4f_branch2b[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ res4f_branch2c (Conv2D)     (None, None, None, 1024)     262144    ['res4f_branch2b_relu[0][0]'] 
+                                                                                                  
+ bn4f_branch2c (BatchNormal  (None, None, None, 1024)     4096      ['res4f_branch2c[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res4f (Add)                 (None, None, None, 1024)     0         ['bn4f_branch2c[0][0]',       
+                                                                     'res4e_relu[0][0]']          
+                                                                                                  
+ res4f_relu (Activation)     (None, None, None, 1024)     0         ['res4f[0][0]']               
+                                                                                                  
+ res5a_branch2a (Conv2D)     (None, None, None, 512)      524288    ['res4f_relu[0][0]']          
+                                                                                                  
+ bn5a_branch2a (BatchNormal  (None, None, None, 512)      2048      ['res5a_branch2a[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res5a_branch2a_relu (Activ  (None, None, None, 512)      0         ['bn5a_branch2a[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ padding5a_branch2b (ZeroPa  (None, None, None, 512)      0         ['res5a_branch2a_relu[0][0]'] 
+ dding2D)                                                                                         
+                                                                                                  
+ res5a_branch2b (Conv2D)     (None, None, None, 512)      2359296   ['padding5a_branch2b[0][0]']  
+                                                                                                  
+ bn5a_branch2b (BatchNormal  (None, None, None, 512)      2048      ['res5a_branch2b[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res5a_branch2b_relu (Activ  (None, None, None, 512)      0         ['bn5a_branch2b[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ res5a_branch2c (Conv2D)     (None, None, None, 2048)     1048576   ['res5a_branch2b_relu[0][0]'] 
+                                                                                                  
+ res5a_branch1 (Conv2D)      (None, None, None, 2048)     2097152   ['res4f_relu[0][0]']          
+                                                                                                  
+ bn5a_branch2c (BatchNormal  (None, None, None, 2048)     8192      ['res5a_branch2c[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ bn5a_branch1 (BatchNormali  (None, None, None, 2048)     8192      ['res5a_branch1[0][0]']       
+ zation)                                                                                          
+                                                                                                  
+ res5a (Add)                 (None, None, None, 2048)     0         ['bn5a_branch2c[0][0]',       
+                                                                     'bn5a_branch1[0][0]']        
+                                                                                                  
+ res5a_relu (Activation)     (None, None, None, 2048)     0         ['res5a[0][0]']               
+                                                                                                  
+ res5b_branch2a (Conv2D)     (None, None, None, 512)      1048576   ['res5a_relu[0][0]']          
+                                                                                                  
+ bn5b_branch2a (BatchNormal  (None, None, None, 512)      2048      ['res5b_branch2a[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res5b_branch2a_relu (Activ  (None, None, None, 512)      0         ['bn5b_branch2a[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ padding5b_branch2b (ZeroPa  (None, None, None, 512)      0         ['res5b_branch2a_relu[0][0]'] 
+ dding2D)                                                                                         
+                                                                                                  
+ res5b_branch2b (Conv2D)     (None, None, None, 512)      2359296   ['padding5b_branch2b[0][0]']  
+                                                                                                  
+ bn5b_branch2b (BatchNormal  (None, None, None, 512)      2048      ['res5b_branch2b[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res5b_branch2b_relu (Activ  (None, None, None, 512)      0         ['bn5b_branch2b[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ res5b_branch2c (Conv2D)     (None, None, None, 2048)     1048576   ['res5b_branch2b_relu[0][0]'] 
+                                                                                                  
+ bn5b_branch2c (BatchNormal  (None, None, None, 2048)     8192      ['res5b_branch2c[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res5b (Add)                 (None, None, None, 2048)     0         ['bn5b_branch2c[0][0]',       
+                                                                     'res5a_relu[0][0]']          
+                                                                                                  
+ res5b_relu (Activation)     (None, None, None, 2048)     0         ['res5b[0][0]']               
+                                                                                                  
+ res5c_branch2a (Conv2D)     (None, None, None, 512)      1048576   ['res5b_relu[0][0]']          
+                                                                                                  
+ bn5c_branch2a (BatchNormal  (None, None, None, 512)      2048      ['res5c_branch2a[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res5c_branch2a_relu (Activ  (None, None, None, 512)      0         ['bn5c_branch2a[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ padding5c_branch2b (ZeroPa  (None, None, None, 512)      0         ['res5c_branch2a_relu[0][0]'] 
+ dding2D)                                                                                         
+                                                                                                  
+ res5c_branch2b (Conv2D)     (None, None, None, 512)      2359296   ['padding5c_branch2b[0][0]']  
+                                                                                                  
+ bn5c_branch2b (BatchNormal  (None, None, None, 512)      2048      ['res5c_branch2b[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res5c_branch2b_relu (Activ  (None, None, None, 512)      0         ['bn5c_branch2b[0][0]']       
+ ation)                                                                                           
+                                                                                                  
+ res5c_branch2c (Conv2D)     (None, None, None, 2048)     1048576   ['res5c_branch2b_relu[0][0]'] 
+                                                                                                  
+ bn5c_branch2c (BatchNormal  (None, None, None, 2048)     8192      ['res5c_branch2c[0][0]']      
+ ization)                                                                                         
+                                                                                                  
+ res5c (Add)                 (None, None, None, 2048)     0         ['bn5c_branch2c[0][0]',       
+                                                                     'res5b_relu[0][0]']          
+                                                                                                  
+ res5c_relu (Activation)     (None, None, None, 2048)     0         ['res5c[0][0]']               
+                                                                                                  
+ C5_reduced (Conv2D)         (None, None, None, 256)      524544    ['res5c_relu[0][0]']          
+                                                                                                  
+ P5_upsampled (UpsampleLike  (None, None, None, 256)      0         ['C5_reduced[0][0]',          
+ )                                                                   'res4f_relu[0][0]']          
+                                                                                                  
+ C4_reduced (Conv2D)         (None, None, None, 256)      262400    ['res4f_relu[0][0]']          
+                                                                                                  
+ P4_merged (Add)             (None, None, None, 256)      0         ['P5_upsampled[0][0]',        
+                                                                     'C4_reduced[0][0]']          
+                                                                                                  
+ P4_upsampled (UpsampleLike  (None, None, None, 256)      0         ['P4_merged[0][0]',           
+ )                                                                   'res3d_relu[0][0]']          
+                                                                                                  
+ C3_reduced (Conv2D)         (None, None, None, 256)      131328    ['res3d_relu[0][0]']          
+                                                                                                  
+ P6 (Conv2D)                 (None, None, None, 256)      4718848   ['res5c_relu[0][0]']          
+                                                                                                  
+ P3_merged (Add)             (None, None, None, 256)      0         ['P4_upsampled[0][0]',        
+                                                                     'C3_reduced[0][0]']          
+                                                                                                  
+ C6_relu (Activation)        (None, None, None, 256)      0         ['P6[0][0]']                  
+                                                                                                  
+ P3 (Conv2D)                 (None, None, None, 256)      590080    ['P3_merged[0][0]']           
+                                                                                                  
+ P4 (Conv2D)                 (None, None, None, 256)      590080    ['P4_merged[0][0]']           
+                                                                                                  
+ P5 (Conv2D)                 (None, None, None, 256)      590080    ['C5_reduced[0][0]']          
+                                                                                                  
+ P7 (Conv2D)                 (None, None, None, 256)      590080    ['C6_relu[0][0]']             
+                                                                                                  
+ anchors_0 (Anchors)         (None, None, 4)              0         ['P3[0][0]']                  
+                                                                                                  
+ anchors_1 (Anchors)         (None, None, 4)              0         ['P4[0][0]']                  
+                                                                                                  
+ anchors_2 (Anchors)         (None, None, 4)              0         ['P5[0][0]']                  
+                                                                                                  
+ anchors_3 (Anchors)         (None, None, 4)              0         ['P6[0][0]']                  
+                                                                                                  
+ anchors_4 (Anchors)         (None, None, 4)              0         ['P7[0][0]']                  
+                                                                                                  
+ regression_submodel (Funct  (None, None, 4)              2443300   ['P3[0][0]',                  
+ ional)                                                              'P4[0][0]',                  
+                                                                     'P5[0][0]',                  
+                                                                     'P6[0][0]',                  
+                                                                     'P7[0][0]']                  
+                                                                                                  
+ anchors (Concatenate)       (None, None, 4)              0         ['anchors_0[0][0]',           
+                                                                     'anchors_1[0][0]',           
+                                                                     'anchors_2[0][0]',           
+                                                                     'anchors_3[0][0]',           
+                                                                     'anchors_4[0][0]']           
+                                                                                                  
+ regression (Concatenate)    (None, None, 4)              0         ['regression_submodel[0][0]', 
+                                                                     'regression_submodel[1][0]', 
+                                                                     'regression_submodel[2][0]', 
+                                                                     'regression_submodel[3][0]', 
+                                                                     'regression_submodel[4][0]'] 
+                                                                                                  
+ boxes (RegressBoxes)        (None, None, 4)              0         ['anchors[0][0]',             
+                                                                     'regression[0][0]']          
+                                                                                                  
+ classification_submodel (F  (None, None, 2)              2401810   ['P3[0][0]',                  
+ unctional)                                                          'P4[0][0]',                  
+                                                                     'P5[0][0]',                  
+                                                                     'P6[0][0]',                  
+                                                                     'P7[0][0]']                  
+                                                                                                  
+ clipped_boxes (ClipBoxes)   (None, None, 4)              0         ['input_1[0][0]',             
+                                                                     'boxes[0][0]']               
+                                                                                                  
+ classification (Concatenat  (None, None, 2)              0         ['classification_submodel[0][0
+ e)                                                                 ]',                           
+                                                                     'classification_submodel[1][0
+                                                                    ]',                           
+                                                                     'classification_submodel[2][0
+                                                                    ]',                           
+                                                                     'classification_submodel[3][0
+                                                                    ]',                           
+                                                                     'classification_submodel[4][0
+                                                                    ]']                           
+                                                                                                  
+ filtered_detections (Filte  [(None, 300, 4),             0         ['clipped_boxes[0][0]',       
+ rDetections)                 (None, 300),                           'classification[0][0]']      
+                              (None, 300)]                                                        
+                                                                                                  
+==================================================================================================
+Total params: 36403702 (138.87 MB)
+Trainable params: 36297462 (138.46 MB)
+Non-trainable params: 106240 (415.00 KB)
+__________________________________________________________________________________________________

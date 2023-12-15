@@ -1,0 +1,12 @@
+valid/cancer/23498.jpg,31,35,82,192,cancer
+valid/cancer/26162.jpg,376,28,445,477,cancer
+valid/cancer/7931.jpg,81,230,209,472,cancer
+valid/cancer/16505.jpg,42,346,420,376,cancer
+valid/cancer/12821.jpg,27,123,110,234,cancer
+valid/non_cancer/6304.jpg,322,370,385,405,non_cancer
+valid/non_cancer/2825.jpg,279,233,495,430,non_cancer
+valid/non_cancer/21322.jpg,393,300,462,342,non_cancer
+valid/non_cancer/7058.jpg,257,44,343,237,non_cancer
+valid/non_cancer/8502.jpg,396,254,494,426,non_cancer
+valid/non_cancer/622.jpg,104,200,183,271,non_cancer
+valid/non_cancer/38050.jpg,270,179,363,403,non_cancer
